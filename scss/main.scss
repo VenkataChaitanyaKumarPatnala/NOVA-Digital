@@ -1,0 +1,273 @@
+/* scss/main.scss */
+
+// 1. VARIABLES
+$primary-color: #2563eb;
+$secondary-color: #1e40af;
+$text-dark: #1f2937;
+$text-light: #f3f4f6;
+$font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+// 2. MIXINS
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 3. GLOBAL RESETS
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-stack;
+    line-height: 1.6;
+    color: $text-dark;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+// Global Container (Keeps body content centered)
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+// 4. HEADER & NAV (UPDATED: Full Width)
+.main-header {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%; // Ensure header background spans full width
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        
+        // FIX: Override global container width to stretch full screen
+        max-width: 100%; 
+        padding: 0 40px; // Added slightly more padding so logo isn't glued to the edge
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $primary-color;
+        span { color: $text-dark; }
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        li { margin-left: 20px; }
+        a:hover { color: $primary-color; }
+    }
+    
+    .menu-toggle { display: none; }
+}
+
+// 5. HERO SECTION
+.hero {
+    background-color: $text-light;
+    text-align: center;
+    padding: 100px 20px;
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        display: inline-block;
+        background: $primary-color;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        &:hover { background: $secondary-color; }
+    }
+}
+
+// 6. SHARED GRID LAYOUT
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+// 7. HOME PAGE STYLE
+.services {
+    padding: 50px 0;
+    h2 { text-align: center; margin-bottom: 40px; }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+    }
+}
+
+// 8. SERVICES PAGE STYLE
+.services-page-style {
+    margin-top: 20px;
+
+    .card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-top: 4px solid transparent; 
+        border: 1px solid #eee;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-top: 4px solid $primary-color;
+        }
+
+        h3::before {
+            display: block;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        &:nth-child(1) h3::before { content: '💻'; }
+        &:nth-child(2) h3::before { content: '🎨'; }
+        &:nth-child(3) h3::before { content: '🚀'; }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: $text-dark;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            list-style: none;
+            text-align: left;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+
+            li {
+                padding: 8px 0;
+                color: #444;
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    content: '✔';
+                    color: $primary-color;
+                    margin-right: 10px;
+                    font-weight: bold;
+                    background: rgba(37, 99, 235, 0.1);
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+// 9. FORMS
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto;
+    
+    .form-group {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: inherit;
+    }
+    
+    .error-msg {
+        color: red;
+        font-size: 0.8rem;
+        display: none;
+    }
+}
+
+// 10. RESPONSIVE DESIGN
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-header {
+        .menu-toggle { 
+            display: block; 
+            background: none; 
+            border: none; 
+            cursor: pointer;
+            margin-left: auto; 
+        }
+        
+        .bar { 
+            display: block; 
+            width: 25px; 
+            height: 3px; 
+            background: $text-dark; 
+            margin: 5px 0; 
+        }
+        
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            
+            &.active { display: flex; }
+            li { margin: 10px 0; }
+        }
+    }
+}
+
+// 11. FOOTER
+footer {
+    background: $text-dark;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; 
+    p { font-size: 0.9rem; opacity: 0.8; }
+}
