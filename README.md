@@ -28,8 +28,8 @@ This is a website I built for **Nova Digital**, a fictional digital agency. It i
 
 ## Screenshots
 *(Images are located in the `images/` folder)*
-* **Desktop View:** See `images/desktop-view.png` for the full grid layout.
-* **Mobile View:** See `images/mobile-view.png` for the responsive menu.
+* **Desktop View:** See screenshots in this folder for the full grid layout.
+* **Mobile View:** See screenshots in this folder for the responsive menu.
 
 ---
 
