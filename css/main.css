@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* scss/main.scss */
 * {
   margin: 0;
   padding: 0;
@@ -180,21 +179,71 @@ a {
 .contact-form {
   max-width: 600px;
   margin: 50px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 .contact-form .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
 }
+.contact-form label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
 .contact-form input, .contact-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #f3f4f6;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 1rem;
   font-family: inherit;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+.contact-form input::-moz-placeholder, .contact-form textarea::-moz-placeholder {
+  color: #9ca3af;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+  color: #9ca3af;
+}
+.contact-form button[type=submit] {
+  width: 100%;
+  padding: 16px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+.contact-form button[type=submit]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+}
+.contact-form button[type=submit]:active {
+  transform: translateY(-1px);
 }
 .contact-form .error-msg {
-  color: red;
-  font-size: 0.8rem;
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  font-weight: 500;
   display: none;
 }
 
@@ -233,6 +282,9 @@ a {
   }
   .main-header .nav-links li {
     margin: 10px 0;
+  }
+  .contact-form {
+    padding: 25px;
   }
 }
 footer {

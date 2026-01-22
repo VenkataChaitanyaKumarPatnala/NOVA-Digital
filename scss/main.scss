@@ -1,20 +1,15 @@
-/* scss/main.scss */
-
-// 1. VARIABLES
 $primary-color: #2563eb;
 $secondary-color: #1e40af;
 $text-dark: #1f2937;
 $text-light: #f3f4f6;
 $font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-// 2. MIXINS
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-// 3. GLOBAL RESETS
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +30,6 @@ main {
     width: 100%;
 }
 
-// Global Container (Keeps body content centered)
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -47,21 +41,18 @@ a {
     color: inherit;
 }
 
-// 4. HEADER & NAV (UPDATED: Full Width)
 .main-header {
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 100%; // Ensure header background spans full width
+    width: 100%;
     
     .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 70px;
-        
-        // FIX: Override global container width to stretch full screen
         max-width: 100%; 
-        padding: 0 40px; // Added slightly more padding so logo isn't glued to the edge
+        padding: 0 40px; 
     }
 
     .logo {
@@ -81,7 +72,6 @@ a {
     .menu-toggle { display: none; }
 }
 
-// 5. HERO SECTION
 .hero {
     background-color: $text-light;
     text-align: center;
@@ -103,14 +93,12 @@ a {
     }
 }
 
-// 6. SHARED GRID LAYOUT
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-// 7. HOME PAGE STYLE
 .services {
     padding: 50px 0;
     h2 { text-align: center; margin-bottom: 40px; }
@@ -124,7 +112,6 @@ a {
     }
 }
 
-// 8. SERVICES PAGE STYLE
 .services-page-style {
     margin-top: 20px;
 
@@ -196,32 +183,83 @@ a {
     }
 }
 
-// 9. FORMS
 .contact-form {
     max-width: 600px;
     margin: 50px auto;
+    background: #fff;
+    padding: 40px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
     
     .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 25px; 
         display: flex;
         flex-direction: column;
     }
     
+    label {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: $text-dark;
+        font-size: 0.95rem;
+    }
+
     input, textarea {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        width: 100%;
+        padding: 15px 20px; 
+        background-color: #f3f4f6; 
+        border: 2px solid transparent; 
+        border-radius: 10px; 
+        font-size: 1rem;
         font-family: inherit;
+        color: $text-dark;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); 
+        }
+
+        &::placeholder {
+            color: #9ca3af;
+        }
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 16px;
+        margin-top: 10px;
+        background: linear-gradient(135deg, $primary-color, $secondary-color); 
+        color: white;
+        border: none;
+        border-radius: 12px; 
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); 
+
+        &:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3); 
+        }
+
+        &:active {
+            transform: translateY(-1px); 
+        }
     }
     
     .error-msg {
-        color: red;
-        font-size: 0.8rem;
+        color: #ef4444;
+        font-size: 0.85rem;
+        margin-top: 8px;
+        font-weight: 500;
         display: none;
     }
 }
 
-// 10. RESPONSIVE DESIGN
 @media (max-width: 768px) {
     .services-grid {
         grid-template-columns: 1fr;
@@ -260,9 +298,12 @@ a {
             li { margin: 10px 0; }
         }
     }
+    
+    .contact-form {
+        padding: 25px; 
+    }
 }
 
-// 11. FOOTER
 footer {
     background: $text-dark;
     color: white;
